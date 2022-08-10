@@ -10,6 +10,22 @@ public class TwoSum {
         Arrays.stream(twoSum(nums, target)).forEach(System.out::println);
     }
 
+    public static int[] twoSum2(int[] nums, int target) {
+        //решил достаточно легко заново через полтора месяца - стало 3мс против 15
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            int key = target - num;
+            if (map.containsKey(key)) {
+                return new int[] {map.get(key), i};
+            }
+            map.put(num, i);
+        }
+
+        return new int[]{};
+    }
+
     public static int[] twoSum(int[] nums, int target) {
         HashMap<Integer, List<Integer>> numMap = new HashMap<>();
         int x;
